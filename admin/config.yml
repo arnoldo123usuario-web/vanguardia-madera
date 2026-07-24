@@ -1,0 +1,55 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Idioma del panel
+locale: es
+
+# Carpeta donde se guardan imágenes (por si algún día se usan)
+media_folder: imagenes
+public_folder: /imagenes
+
+collections:
+  - name: columnas
+    label: Columnas
+    label_singular: Columna
+    description: Cada columna publicada en el sitio.
+    folder: columnas
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{fields.slug}}"
+    summary: "{{fecha}} — {{titulo}}"
+    sortable_fields: [fecha, titulo, autor]
+    fields:
+      - label: Título
+        name: titulo
+        widget: string
+
+      - label: Autor (nombre y apellido)
+        name: autor
+        widget: string
+
+      - label: Fecha
+        name: fecha
+        widget: datetime
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        format: "YYYY-MM-DD"
+
+      - label: "Liga (sin espacios ni acentos)"
+        name: slug
+        widget: string
+        hint: "Con guiones. Ejemplo: el-agua-no-se-discute-en-agosto"
+        pattern: ['^[a-z0-9-]+$', 'Solo minúsculas, números y guiones. Sin espacios ni acentos.']
+
+      - label: "Resumen (2 o 3 líneas)"
+        name: sumario
+        widget: text
+        hint: "Aparece debajo del título en la lista principal."
+
+      - label: Texto de la columna
+        name: cuerpo
+        widget: text
+        hint: "Escribe normal. Deja UNA línea en blanco entre párrafo y párrafo."

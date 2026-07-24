@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vanguardia Madera — Columnas</title>
+<meta name="description" content="Columnas de opinión escritas por jóvenes de Ciudad Madera, Chihuahua.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --guinda:#6E1631;
+  --guinda-2:#8A2145;
+  --guinda-oscuro:#4E0F22;
+  --pino:#1C4234;
+  --pino-2:#25573F;
+  --blanco:#FFFFFF;
+  --papel:#FAF7F4;
+  --papel-2:#F1EBE9;
+  --tinta:#1A1114;
+  --niebla:#7C6E72;
+
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --texto:"Newsreader",Georgia,serif;
+  --mono:"DM Mono",ui-monospace,monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--papel);
+  color:var(--tinta);
+  font-family:var(--texto);
+  font-size:clamp(1.02rem,.98rem + .35vw,1.18rem);
+  line-height:1.62;
+  font-optical-sizing:auto;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--pino);outline-offset:3px;border-radius:2px}
+
+.envoltura{width:min(100% - 2.5rem,68rem);margin-inline:auto}
+.angosto{width:min(100% - 2.5rem,40rem);margin-inline:auto}
+
+/* ---------- Cabecera ---------- */
+.cabecera{
+  position:relative;
+  background:var(--guinda);
+  color:var(--blanco);
+  overflow:hidden;
+  padding-block:clamp(2.5rem,7vw,5rem) clamp(2rem,5vw,3.5rem);
+}
+.veta{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.veta path{fill:none;stroke:var(--guinda-2);stroke-width:1.15}
+.cabecera .envoltura{position:relative;z-index:1}
+
+.rotulo{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#F2C9D3;
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+  margin-bottom:1.2rem;
+}
+.rotulo::before{
+  content:"";
+  width:2rem;height:2px;background:var(--pino);
+  display:inline-block;
+}
+.rotulo .verde{color:#8FBFA6}
+.masthead{
+  font-family:var(--display);
+  font-weight:800;
+  font-stretch:88%;
+  font-size:clamp(3.1rem,13.5vw,9rem);
+  line-height:.85;
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+  text-wrap:balance;
+}
+.masthead .linea2{display:block;color:#F2C9D3;-webkit-text-stroke:0}
+.lema{
+  margin-top:1.6rem;
+  max-width:34rem;
+  font-size:1.05rem;
+  line-height:1.55;
+  color:#F0D6DC;
+  font-style:italic;
+}
+.datos-cabecera{
+  margin-top:2.2rem;
+  padding-top:1rem;
+  border-top:1px solid var(--guinda-2);
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:#D9A9B4;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem 1.6rem;
+}
+
+/* ---------- Índice ---------- */
+.indice{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.titulo-seccion{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--niebla);
+  padding-bottom:.9rem;
+  border-bottom:2px solid var(--guinda);
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+}
+
+.fila{
+  display:block;
+  text-decoration:none;
+  padding-block:1.7rem;
+  border-bottom:1px solid #E2D8D9;
+  transition:background-color .18s ease,padding-left .18s ease;
+}
+.fila:hover,.fila:focus-visible{background:var(--papel-2);padding-left:.9rem}
+.fila:hover .titulo-col{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:var(--guinda)}
+
+.meta-fila{
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--niebla);
+  display:flex;
+  gap:.9rem;
+  align-items:baseline;
+  margin-bottom:.55rem;
+}
+.folio{color:var(--pino);font-weight:500}
+.titulo-col{
+  font-family:var(--display);
+  font-weight:600;
+  font-stretch:92%;
+  font-size:clamp(1.5rem,1.1rem + 1.9vw,2.35rem);
+  line-height:1.08;
+  letter-spacing:-.02em;
+  color:var(--guinda-oscuro);
+  text-wrap:balance;
+}
+.sumario{
+  margin-top:.65rem;
+  max-width:44rem;
+  color:#4A3D40;
+  font-size:1rem;
+  line-height:1.55;
+}
+.vacio{
+  padding-block:3rem;
+  color:var(--niebla);
+  font-style:italic;
+}
+
+/* ---------- Columna ---------- */
+.columna{padding-block:clamp(2rem,5vw,3.5rem) clamp(3rem,7vw,5rem)}
+.regreso{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--niebla);
+  text-decoration:none;
+  margin-bottom:2.4rem;
+}
+.regreso:hover{color:var(--guinda)}
+
+.titulo-articulo{
+  font-family:var(--display);
+  font-weight:700;
+  font-stretch:90%;
+  font-size:clamp(2.1rem,1.4rem + 3.2vw,3.6rem);
+  line-height:1.02;
+  letter-spacing:-.03em;
+  color:var(--guinda-oscuro);
+  text-wrap:balance;
+}
+.firma{
+  margin-top:1.4rem;
+  padding-top:1rem;
+  border-top:1px solid #E2D8D9;
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--niebla);
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem 1.3rem;
+  align-items:center;
+}
+.firma strong{color:var(--tinta);font-weight:500}
+
+.cuerpo{margin-top:2.4rem}
+.cuerpo p{margin-bottom:1.35em}
+.cuerpo p:first-of-type::first-letter{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:3.3em;
+  line-height:.78;
+  float:left;
+  padding:.06em .12em 0 0;
+  color:var(--guinda);
+}
+
+.compartir{
+  margin-top:3rem;
+  padding-top:1.5rem;
+  border-top:2px solid var(--guinda);
+  display:flex;
+  flex-wrap:wrap;
+  gap:.7rem;
+  align-items:center;
+}
+.boton{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:.7rem 1.1rem;
+  border:1px solid var(--tinta);
+  background:transparent;
+  color:var(--tinta);
+  cursor:pointer;
+  text-decoration:none;
+  transition:background-color .15s ease,color .15s ease;
+}
+.boton:hover{background:var(--tinta);color:var(--blanco)}
+.boton.lleno{background:var(--guinda);border-color:var(--guinda);color:var(--blanco)}
+.boton.lleno:hover{background:var(--guinda-oscuro);border-color:var(--guinda-oscuro)}
+.aviso-copia{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--pino);
+  opacity:0;
+  transition:opacity .2s ease;
+}
+.aviso-copia.visible{opacity:1}
+
+/* ---------- Pie ---------- */
+.pie{
+  background:var(--pino);
+  color:#C8D6CC;
+  padding-block:clamp(2.5rem,6vw,4rem);
+  margin-top:auto;
+}
+.pie h2{
+  font-family:var(--display);
+  font-weight:700;
+  font-stretch:90%;
+  font-size:1.5rem;
+  letter-spacing:-.02em;
+  color:var(--blanco);
+  margin-bottom:.9rem;
+}
+.pie p{max-width:38rem;font-size:.98rem;line-height:1.6;margin-bottom:1rem}
+.pie .nota{
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:#8AA394;
+  line-height:1.8;
+  margin-top:1.8rem;
+  padding-top:1.2rem;
+  border-top:1px solid var(--pino-2);
+}
+
+body{display:flex;flex-direction:column;min-height:100vh}
+main{flex:1}
+[hidden]{display:none !important}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+}
+</style>
+</head>
+<body>
+
+<header class="cabecera">
+  <svg class="veta" id="veta" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <div class="envoltura">
+    <span class="rotulo">Ciudad Madera, Chihuahua <span class="verde">· Colectivo juvenil</span></span>
+    <h1 class="masthead">Vanguardia<span class="linea2">Madera</span></h1>
+    <p class="lema">Jóvenes del municipio escribiendo sobre lo que pasa en el municipio. Una columna a la vez.</p>
+    <div class="datos-cabecera">
+      <span id="conteo">Cargando…</span>
+      <span>Publicación independiente</span>
+      <span>Fundado en 2026</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Índice -->
+  <section class="indice envoltura" id="vista-indice">
+    <div class="titulo-seccion">
+      <span>Columnas publicadas</span>
+      <span>Más reciente primero</span>
+    </div>
+    <div id="lista"></div>
+  </section>
+
+  <!-- Columna individual -->
+  <article class="columna angosto" id="vista-columna" hidden>
+    <a class="regreso" href="#/">← Todas las columnas</a>
+    <h1 class="titulo-articulo" id="art-titulo"></h1>
+    <div class="firma">
+      <span>Por <strong id="art-autor"></strong></span>
+      <span id="art-fecha"></span>
+      <span id="art-lectura"></span>
+    </div>
+    <div class="cuerpo" id="art-cuerpo"></div>
+    <div class="compartir">
+      <button class="boton lleno" id="btn-copiar" type="button">Copiar liga</button>
+      <a class="boton" id="btn-wa" href="#" target="_blank" rel="noopener">Compartir por WhatsApp</a>
+      <span class="aviso-copia" id="aviso">Liga copiada</span>
+    </div>
+  </article>
+</main>
+
+<footer class="pie">
+  <div class="envoltura">
+    <h2>Quiénes somos</h2>
+    <p>Somos un grupo de jóvenes de Ciudad Madera que escribe sobre el municipio: lo que funciona, lo que no, y lo que podría hacerse distinto. Escribimos por nuestra cuenta y bajo nuestro nombre.</p>
+    <p>Este sitio es un proyecto ciudadano independiente. No pertenece ni representa a ninguna dependencia de gobierno, partido político ni administración municipal. Cada columna es responsabilidad de quien la firma.</p>
+    <div class="nota">
+      Contacto: correo@ejemplo.com<br>
+      Ciudad Madera, Chihuahua, México
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================
+   CONFIGURACIÓN  —  EDITA ESTAS DOS LÍNEAS UNA SOLA VEZ
+   Pon aquí tu usuario de GitHub y el nombre del repositorio.
+   Ejemplo: si tu repo es  github.com/arnoldojh/vanguardia-madera
+     GH_USUARIO = "arnoldojh"
+     GH_REPO    = "vanguardia-madera"
+   ========================================================== */
+const GH_USUARIO = "TU-USUARIO-DE-GITHUB";
+const GH_REPO    = "vanguardia-madera";
+const GH_RAMA    = "main";
+
+/* ==========================================================
+   Columnas de respaldo: solo se muestran si el sitio todavía
+   no está conectado a GitHub (por ejemplo, al abrir el archivo
+   en tu computadora). Una vez conectado, se usan las reales.
+   ========================================================== */
+const RESPALDO = [
+  {
+    slug:"escribir-desde-aqui",
+    titulo:"Por qué decidimos escribir",
+    autor:"El colectivo",
+    fecha:"2026-06-01",
+    sumario:"Un texto no arregla una calle. Pero la discusión pública en el municipio ha sido, durante años, un monólogo. Empezamos por ahí.",
+    cuerpo:[
+      "Este sitio nace de una conversación que tuvimos varias veces en distintas mesas: en Madera se opina mucho y se documenta poco. Las cosas se saben, se comentan, se dan por hechas, y casi nunca quedan escritas en algún lado donde alguien más pueda revisarlas.",
+      "No somos periodistas ni pretendemos serlo. Somos un grupo de jóvenes del municipio con la disciplina suficiente para sentarnos a escribir una vez a la semana y firmar lo que escribimos con nuestro nombre completo.",
+      "Este proyecto es independiente. No recibe recursos públicos, no responde a ningún partido y no habla en nombre de ninguna autoridad. Si eso cambia alguna vez, lo diremos aquí antes que en ningún otro lado."
+    ]
+  }
+];
+
+/* ---------- Carga de columnas ---------- */
+async function cargarColumnas(){
+  const api=`https://api.github.com/repos/${GH_USUARIO}/${GH_REPO}/contents/columnas?ref=${GH_RAMA}`;
+  try{
+    const r=await fetch(api,{headers:{Accept:"application/vnd.github+json"}});
+    if(!r.ok) throw new Error("API "+r.status);
+    const archivos=await r.json();
+    const jsons=archivos.filter(a=>a.name.endsWith(".json"));
+    const cols=await Promise.all(jsons.map(async a=>{
+      const rc=await fetch(a.download_url);
+      const data=await rc.json();
+      if(!data.slug) data.slug=a.name.replace(/\.json$/,"");
+      return data;
+    }));
+    return cols;
+  }catch(e){
+    console.warn("Usando columnas de respaldo:",e.message);
+    return RESPALDO;
+  }
+}
+
+/* ---------- Utilidades ---------- */
+const MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+function fechaLarga(iso){const [a,m,d]=iso.split("-").map(Number);return `${d} de ${MESES[m-1]} de ${a}`;}
+function fechaCorta(iso){const [a,m,d]=iso.split("-").map(Number);return `${String(d).padStart(2,"0")} ${MESES[m-1].slice(0,3)} ${a}`;}
+function parrafos(cuerpo){
+  if(Array.isArray(cuerpo)) return cuerpo.map(s=>String(s).trim()).filter(Boolean);
+  return String(cuerpo||"").split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean);
+}
+function minutos(cuerpo){
+  const palabras=parrafos(cuerpo).join(" ").split(/\s+/).filter(Boolean).length;
+  return Math.max(1,Math.round(palabras/200))+" min de lectura";
+}
+
+/* ---------- Estado ---------- */
+let COLUMNAS=[];
+
+/* ---------- Índice ---------- */
+function pintarIndice(){
+  const lista=document.getElementById("lista");
+  lista.innerHTML="";
+  if(COLUMNAS.length===0){
+    lista.innerHTML='<p class="vacio">Todavía no hay columnas publicadas. La primera aparecerá aquí en cuanto alguien del equipo la suba.</p>';
+    document.getElementById("conteo").textContent="0 columnas";
+    return;
+  }
+  COLUMNAS.forEach((c,i)=>{
+    const a=document.createElement("a");
+    a.className="fila";
+    a.href="#/c/"+c.slug;
+    a.innerHTML=`
+      <div class="meta-fila">
+        <span class="folio">${String(COLUMNAS.length-i).padStart(2,"0")}</span>
+        <span>${fechaCorta(c.fecha)}</span>
+        <span>${c.autor}</span>
+      </div>
+      <h2 class="titulo-col">${c.titulo}</h2>
+      <p class="sumario">${c.sumario}</p>`;
+    lista.appendChild(a);
+  });
+  document.getElementById("conteo").textContent=COLUMNAS.length+(COLUMNAS.length===1?" columna":" columnas");
+}
+
+/* ---------- Ruteo ---------- */
+const vIndice=document.getElementById("vista-indice");
+const vCol=document.getElementById("vista-columna");
+function ruta(){
+  const m=location.hash.match(/^#\/c\/(.+)$/);
+  const col=m?COLUMNAS.find(c=>c.slug===m[1]):null;
+  if(col){
+    document.getElementById("art-titulo").textContent=col.titulo;
+    document.getElementById("art-autor").textContent=col.autor;
+    document.getElementById("art-fecha").textContent=fechaLarga(col.fecha);
+    document.getElementById("art-lectura").textContent=minutos(col.cuerpo);
+    const cuerpo=document.getElementById("art-cuerpo");
+    cuerpo.innerHTML="";
+    parrafos(col.cuerpo).forEach(p=>{const el=document.createElement("p");el.textContent=p;cuerpo.appendChild(el);});
+    document.title=col.titulo+" — Vanguardia Madera";
+    const texto=encodeURIComponent(`${col.titulo} — ${location.href}`);
+    document.getElementById("btn-wa").href="https://wa.me/?text="+texto;
+    vIndice.hidden=true; vCol.hidden=false;
+  }else{
+    document.title="Vanguardia Madera — Columnas";
+    vIndice.hidden=false; vCol.hidden=true;
+  }
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+document.getElementById("btn-copiar").addEventListener("click",async()=>{
+  const aviso=document.getElementById("aviso");
+  try{ await navigator.clipboard.writeText(location.href); }
+  catch(e){
+    const t=document.createElement("textarea");t.value=location.href;document.body.appendChild(t);t.select();
+    document.execCommand("copy");t.remove();
+  }
+  aviso.classList.add("visible");
+  setTimeout(()=>aviso.classList.remove("visible"),2200);
+});
+
+/* ---------- Veta de la cabecera ---------- */
+(function veta(){
+  const svg=document.getElementById("veta");
+  const w=1200,h=520;
+  svg.setAttribute("viewBox",`0 0 ${w} ${h}`);
+  let s=7; const rnd=()=> (s=(s*16807)%2147483647)/2147483647;
+  for(let i=0;i<26;i++){
+    const y=18+i*20+rnd()*6; const amp=8+rnd()*26;
+    let d=`M -20 ${y.toFixed(1)}`;
+    for(let x=0;x<=w+40;x+=110){
+      const cy=y+Math.sin((x/170)+i*0.55)*amp*(0.5+rnd()*0.5);
+      d+=` Q ${(x+55).toFixed(0)} ${cy.toFixed(1)} ${(x+110).toFixed(0)} ${(y+Math.sin(((x+110)/170)+i*0.55)*amp*0.6).toFixed(1)}`;
+    }
+    const p=document.createElementNS("http://www.w3.org/2000/svg","path");
+    p.setAttribute("d",d); p.setAttribute("stroke-width",(0.7+rnd()*1.4).toFixed(2));
+    svg.appendChild(p);
+  }
+})();
+
+/* ---------- Arranque ---------- */
+window.addEventListener("hashchange",ruta);
+(async()=>{
+  COLUMNAS=await cargarColumnas();
+  COLUMNAS.sort((a,b)=> (a.fecha<b.fecha?1:a.fecha>b.fecha?-1:0));
+  pintarIndice();
+  ruta();
+})();
+</script>
+
+<!-- Inicio de sesión del equipo (Netlify Identity) -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if(window.netlifyIdentity){
+    window.netlifyIdentity.on("init", user=>{
+      if(!user){
+        window.netlifyIdentity.on("login", ()=>{ document.location.href="/admin/"; });
+      }
+    });
+  }
+</script>
+</body>
+</html>
