@@ -348,20 +348,9 @@ main{flex:1}
 
 <script>
 /* ==========================================================
-   CONFIGURACIÓN  —  EDITA ESTAS DOS LÍNEAS UNA SOLA VEZ
-   Pon aquí tu usuario de GitHub y el nombre del repositorio.
-   Ejemplo: si tu repo es  github.com/arnoldojh/vanguardia-madera
-     GH_USUARIO = "arnoldojh"
-     GH_REPO    = "vanguardia-madera"
-   ========================================================== */
-const GH_USUARIO = "TU-USUARIO-DE-GITHUB";
-const GH_REPO    = "vanguardia-madera";
-const GH_RAMA    = "main";
-
-/* ==========================================================
-   Columnas de respaldo: solo se muestran si el sitio todavía
-   no está conectado a GitHub (por ejemplo, al abrir el archivo
-   en tu computadora). Una vez conectado, se usan las reales.
+   Columnas de respaldo: solo se muestran si la lista todavía
+   no se ha generado (por ejemplo, al abrir el archivo en tu
+   computadora). En el sitio en línea se usan las reales.
    ========================================================== */
 const RESPALDO = [
   {
@@ -379,19 +368,14 @@ const RESPALDO = [
 ];
 
 /* ---------- Carga de columnas ---------- */
+/* Lee la lista que Netlify genera automáticamente en cada
+   publicación (columnas.json). Es instantáneo y sin límites. */
 async function cargarColumnas(){
-  const api=`https://api.github.com/repos/${GH_USUARIO}/${GH_REPO}/contents/columnas?ref=${GH_RAMA}`;
   try{
-    const r=await fetch(api,{headers:{Accept:"application/vnd.github+json"}});
-    if(!r.ok) throw new Error("API "+r.status);
-    const archivos=await r.json();
-    const jsons=archivos.filter(a=>a.name.endsWith(".json"));
-    const cols=await Promise.all(jsons.map(async a=>{
-      const rc=await fetch(a.download_url);
-      const data=await rc.json();
-      if(!data.slug) data.slug=a.name.replace(/\.json$/,"");
-      return data;
-    }));
+    const r=await fetch("columnas.json",{cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const cols=await r.json();
+    if(!Array.isArray(cols)||cols.length===0) throw new Error("lista vacía");
     return cols;
   }catch(e){
     console.warn("Usando columnas de respaldo:",e.message);
